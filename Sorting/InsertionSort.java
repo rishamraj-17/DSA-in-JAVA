@@ -4,38 +4,20 @@ import java.util.Arrays;
 
 class InsertionSort {
 
-  void insertionSort(int array[]) {
+  void insertionSort(int array[], int n) {
+    int i, key, j;
+    for (i = 1; i < n; i++) {
+        key = array[i];
+        j = i - 1;
 
-    int size = array.length;
-
-    for (int step = 1; step < size; step++) {
-
-      int key = array[step];
-
-      int j = step - 1;
-
-      // Compare key with each element on the left of it until an element smaller than
-
-      // it is found.
-
-      // For descending order, change key<array[j] to key>array[j].
-
-      while (j >= 0 && key < array[j]) {
-
-        array[j + 1] = array[j];
-
-        --j;
-
-      }
-
-      // Place key at after the element just smaller than it.
-
-      array[j + 1] = key;
-
+        // Move elements of array[0..i-1], that are greater than key, to one position ahead of their current position
+        while (j >= 0 && array[j] > key) {
+            array[j + 1] = array[j];
+            j = j - 1;
+        }
+        array[j + 1] = key;
     }
-
-  }
-
+}
   // Driver code
 
   public static void main(String args[]) {
